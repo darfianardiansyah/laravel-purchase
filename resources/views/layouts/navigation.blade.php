@@ -15,6 +15,21 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.suppliers.index')" :active="request()->routeIs('admin.suppliers.index')">
+                        {{ __('Supplier') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.currencies.index')" :active="request()->routeIs('admin.currencies.index')">
+                        {{ __('Mata Uang') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
+                        {{ __('Produk') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.exchange_rates.index')" :active="request()->routeIs('admin.exchange_rates.index')">
+                        {{ __('Kurs') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.purchases.index')" :active="request()->routeIs('admin.purchases.index')">
+                        {{ __('Pembelian') }}
+                    </x-nav-link>
                 </div>
             </div>
 
