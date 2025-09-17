@@ -19,6 +19,10 @@ class Purchase extends Model
         'total_price',
         'date',
     ];
+
+    protected $casts = [
+        'date' => 'date:d/m/Y',
+    ];
     public function supplier()
     {
         return $this->belongsTo(Supplier::class);

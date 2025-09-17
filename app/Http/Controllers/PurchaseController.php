@@ -96,7 +96,7 @@ class PurchaseController extends Controller
             $converted = $p->total_price * ($rate ? $rate->rate : 0);
 
             $report[] = [
-                'date'            => $p->date,
+                'date'            => $p->date->format('d/m/Y'),
                 'supplier'        => $p->supplier->name,
                 'address'         => $p->supplier->address,
                 'product'         => $p->product->name,

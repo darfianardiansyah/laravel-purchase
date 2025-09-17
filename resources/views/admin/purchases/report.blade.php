@@ -47,7 +47,7 @@
                 tbody.innerHTML += `
                     <tr>
                         <td class="border px-2 text-center align-middle">${i+1}</td>
-                        <td class="border px-2">${formatDate(p.date)}</td>
+                        <td class="border px-2">${p.date}</td>
                         <td class="border px-2">${p.supplier}</td>
                         <td class="border px-2">${p.address}</td>
                         <td class="border px-2">${p.product}</td>
@@ -105,12 +105,6 @@
             var script = document.createElement('script');
             script.src = 'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';
             document.head.appendChild(script);
-        }
-
-        function formatDate(dateStr) {
-            if (!dateStr) return '';
-            const d = new Date(dateStr);
-            return d.toLocaleDateString('id-ID');
         }
 
         function formatNumber(num) {
