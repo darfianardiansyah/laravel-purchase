@@ -51,12 +51,8 @@
 
                             <!-- Tombol -->
                             <div class="flex justify-end space-x-2">
-                                <x-secondary-button type="button" onclick="closeModal()">
-                                    {{ __('Batal') }}
-                                </x-secondary-button>
-                                <x-primary-button>
-                                    {{ __('Simpan') }}
-                                </x-primary-button>
+                                <x-secondary-button type="button" onclick="closeModal()">Batal</x-secondary-button>
+                                <x-primary-button>Simpan</x-primary-button>
                             </div>
                         </form>
                     </div>
