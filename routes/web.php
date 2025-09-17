@@ -31,8 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/currencies', [AdminCurrencyController::class, 'index'])->name('admin.currencies.index');
     Route::get('/exchange-rates', [AdminExchangeRateController::class, 'index'])->name('admin.exchange_rates.index');
     Route::get('/purchases', [AdminPurchaseController::class, 'index'])->name('admin.purchases.index');
+    Route::get('/purchases/report', [AdminPurchaseController::class, 'report'])->name('admin.purchases.report');
 });
-
-Route::get('purchases/report', [PurchaseController::class, 'report']);
 
 require __DIR__ . '/auth.php';

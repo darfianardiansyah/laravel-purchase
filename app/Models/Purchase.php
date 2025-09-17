@@ -1,11 +1,11 @@
 <?php
 namespace App\Models;
 
-use App\Models\Product;
 use App\Models\Currency;
+use App\Models\Product;
 use App\Models\Supplier;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Purchase extends Model
 {
@@ -14,15 +14,21 @@ class Purchase extends Model
     protected $fillable = [
         'product_id',
         'supplier_id',
-        'quantity',
-        'price',
-        'total',
+        'currency_id',
+        'qty',
+        'total_price',
         'date',
     ];
     public function supplier()
-    {return $this->belongsTo(Supplier::class);}
+    {
+        return $this->belongsTo(Supplier::class);
+    }
     public function currency()
-    {return $this->belongsTo(Currency::class);}
+    {
+        return $this->belongsTo(Currency::class);
+    }
     public function product()
-    {return $this->belongsTo(Product::class);}
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
