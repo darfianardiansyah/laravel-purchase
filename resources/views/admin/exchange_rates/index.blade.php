@@ -36,7 +36,10 @@
 
                             <div>
                                 <x-input-label for="currency_id" :value="__('Kode')" />
-                                <x-text-input id="currency_id" type="text" class="mt-1 block w-full" />
+                                <select id="currency_id" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                                    <option value="">-- Pilih Mata Uang --</option>
+                                </select>
+                                <x-input-error :messages="$errors->get('currency_id')" class="mt-2" />
                             </div>
 
                             <div>
@@ -64,6 +67,30 @@
         const apiUrl = "/api/exchange-rates";
         document.addEventListener("DOMContentLoaded", () => loadData());
 
+        async function loadCurrencies(selectedId = null) {
+            let res = await fetch("/api/currencies");
+            let currencies = await res.json();
+
+            let select = document.getElementById("currency_id");
+            select.innerHTML = `<option value="">-- Pilih Mata Uang --</option>`;
+
+            currencies.forEach(c => {
+                let option = document.createElement("option");
+                option.value = c.id;
+                option.textContent = c.code;
+                if (selectedId && selectedId == c.id) {
+                    option.selected = true;
+                }
+                select.appendChild(option);
+            });
+        }
+
+        function formatRupiah(value) {
+            return new Intl.NumberFormat('id-ID', {
+                minimumFractionDigits: 2
+            }).format(value);
+        }
+
         async function loadData() {
             let res = await fetch(apiUrl);
             let data = await res.json();
@@ -76,7 +103,7 @@
                         <td class="border px-2 text-center align-middle">${i+1}</td>
                         <td class="border px-2">${p.currency.code}</td>
                         <td class="border px-2">${p.date}</td>
-                        <td class="border px-2">${p.rate}</td>
+                        <td class="border px-2">${formatRupiah(p.rate)}</td>
                         <td class="border px-2 text-center align-middle">
                             <button onclick="editData(${p.id})" class="text-indigo-600 border border-indigo-500 hover:bg-indigo-50 px-3 py-1 rounded">Edit</button>
                             <button onclick="deleteData(${p.id})" class="text-red-600 border border-red-500 hover:bg-red-50 px-3 py-1 rounded">Hapus</button>
@@ -89,6 +116,7 @@
             document.getElementById("formProduct").reset();
             document.getElementById("exchange_rate_id").value = "";
             document.getElementById("modalTitle").innerText = "Tambah Kurs";
+            loadCurrencies();
             document.getElementById("modalForm").classList.remove("hidden");
         });
 
@@ -100,13 +128,17 @@
             e.preventDefault();
             let id = document.getElementById("exchange_rate_id").value;
             let payload = {
-                code: document.getElementById("code").value,
-                name: document.getElementById("name").value,
+                currency_id: document.getElementById("currency_id").value,
+                date: document.getElementById("date").value,
+                rate: document.getElementById("rate").value,
             };
 
             let res = await fetch(id ? `${apiUrl}/${id}` : apiUrl, {
                 method: id ? "PUT" : "POST",
-                headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
                 body: JSON.stringify(payload),
             });
 
@@ -127,13 +159,17 @@
             document.getElementById("date").value = p.date;
             document.getElementById("rate").value = p.rate;
 
+            await loadCurrencies(p.currency_id);
+
             document.getElementById("modalTitle").innerText = "Edit Kurs";
             document.getElementById("modalForm").classList.remove("hidden");
         }
 
         async function deleteData(id) {
             if (!confirm("Yakin hapus Kurs?")) return;
-            let res = await fetch(`${apiUrl}/${id}`, { method: "DELETE" });
+            let res = await fetch(`${apiUrl}/${id}`, {
+                method: "DELETE"
+            });
             if (res.ok) loadData();
         }
     </script>
