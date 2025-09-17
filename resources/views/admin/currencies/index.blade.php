@@ -31,7 +31,7 @@
                         <h3 id="modalTitle" class="text-lg font-semibold mb-4">Tambah Mata Uang</h3>
 
                         <form id="formProduct" class="space-y-4">
-                            <input type="hidden" id="product_id">
+                            <input type="hidden" id="currency_id">
 
                             <div>
                                 <x-input-label for="code" :value="__('Kode')" />
@@ -80,7 +80,7 @@
 
         document.getElementById("btnAdd").addEventListener("click", () => {
             document.getElementById("formProduct").reset();
-            document.getElementById("product_id").value = "";
+            document.getElementById("currency_id").value = "";
             document.getElementById("modalTitle").innerText = "Tambah Mata Uang";
             document.getElementById("modalForm").classList.remove("hidden");
         });
@@ -91,7 +91,7 @@
 
         document.getElementById("formProduct").addEventListener("submit", async (e) => {
             e.preventDefault();
-            let id = document.getElementById("product_id").value;
+            let id = document.getElementById("currency_id").value;
             let payload = {
                 code: document.getElementById("code").value,
                 name: document.getElementById("name").value,
@@ -115,7 +115,7 @@
             let res = await fetch(`${apiUrl}/${id}`);
             let p = await res.json();
 
-            document.getElementById("product_id").value = p.id;
+            document.getElementById("currency_id").value = p.id;
             document.getElementById("code").value = p.code;
             document.getElementById("name").value = p.name;
 
