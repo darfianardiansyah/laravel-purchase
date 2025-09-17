@@ -3,14 +3,13 @@
         <h2 class="font-semibold text-xl">Daftar Mata Uang</h2>
     </x-slot>
 
-    <div class="p-6">
-        <x-primary-button id="btnAdd">Tambah Mata Uang</x-primary-button>
-    </div>
-
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-8 lg:px-12">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="relative overflow-x-auto shadow-xl sm:rounded-lg">
+                    <div class="flex justify-end p-4">
+                        <x-primary-button id="btnAdd">Tambah Mata Uang</x-primary-button>
+                    </div>
                     <table id="tableProducts" class="w-full border text-sm">
                         <thead>
                             <tr class="bg-gray-100">
@@ -99,7 +98,10 @@
 
             let res = await fetch(id ? `${apiUrl}/${id}` : apiUrl, {
                 method: id ? "PUT" : "POST",
-                headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
                 body: JSON.stringify(payload),
             });
 
@@ -125,7 +127,9 @@
 
         async function deleteData(id) {
             if (!confirm("Yakin hapus Mata Uang?")) return;
-            let res = await fetch(`${apiUrl}/${id}`, { method: "DELETE" });
+            let res = await fetch(`${apiUrl}/${id}`, {
+                method: "DELETE"
+            });
             if (res.ok) loadData();
         }
     </script>

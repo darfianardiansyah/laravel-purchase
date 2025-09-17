@@ -3,16 +3,13 @@
         <h2 class="font-semibold text-xl">Daftar Supplier</h2>
     </x-slot>
 
-    <div class="p-6">
-        <!-- Tombol Tambah -->
-        <x-primary-button id="btnAdd">Tambah Supplier</x-primary-button>
-
-    </div>
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-8 lg:px-12">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <!-- Table -->
                 <div class="relative overflow-x-auto shadow-xl sm:rounded-lg">
+                    <div class="flex justify-end p-4">
+                        <x-primary-button id="btnAdd">Tambah Supplier</x-primary-button>
+                    </div>
                     <table id="tableSuppliers" class="w-full border text-sm">
                         <thead>
                             <tr class="bg-gray-100">
