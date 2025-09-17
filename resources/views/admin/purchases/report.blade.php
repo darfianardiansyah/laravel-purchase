@@ -45,7 +45,7 @@
                         <td class="border px-2">${p.address}</td>
                         <td class="border px-2">${p.product}</td>
                         <td class="border px-2 text-center">${p.qty}</td>
-                        <td class="border px-2 text-right">${formatNumber(p.total_price_idr)}</td>
+                        <td class="border px-2 text-right">${p.total_price_idr == 0 ? '' : formatNumber(p.total_price_idr)}</td>
                     </tr>`;
             });
         }

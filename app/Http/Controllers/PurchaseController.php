@@ -93,7 +93,7 @@ class PurchaseController extends Controller
                 ->orderBy('date', 'desc')
                 ->first();
 
-            $converted = $p->total_price * ($rate ? $rate->rate : 1);
+            $converted = $p->total_price * ($rate ? $rate->rate : 0);
 
             $report[] = [
                 'date'            => $p->date,
