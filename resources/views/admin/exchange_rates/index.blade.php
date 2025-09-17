@@ -74,7 +74,7 @@
                 tbody.innerHTML += `
                     <tr>
                         <td class="border px-2 text-center align-middle">${i+1}</td>
-                        <td class="border px-2">${p.currency_id}</td>
+                        <td class="border px-2">${p.currency.code}</td>
                         <td class="border px-2">${p.date}</td>
                         <td class="border px-2">${p.rate}</td>
                         <td class="border px-2 text-center align-middle">
