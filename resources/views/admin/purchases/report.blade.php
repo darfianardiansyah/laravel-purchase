@@ -100,7 +100,7 @@
                 URL.revokeObjectURL(url);
             }
         });
-        // SheetJS CDN loader (jika belum ada)
+
         if (!window.XLSX) {
             var script = document.createElement('script');
             script.src = 'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';
