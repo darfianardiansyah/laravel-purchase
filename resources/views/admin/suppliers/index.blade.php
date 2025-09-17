@@ -79,7 +79,7 @@
                             <td class="border px-2 text-center align-middle">${i+1}</td>
                             <td class="border px-2">${s.name}</td>
                             <td class="border px-2">${s.address}</td>
-                            <td class="border px-2">
+                            <td class="border px-2 text-center">
                                 <button onclick="editData(${s.id})"
                                     class="text-indigo-600 border border-indigo-500 hover:bg-indigo-50 font-medium px-3 py-1 rounded transition">
                                     Edit

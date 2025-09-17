@@ -7,8 +7,7 @@
         <div class="max-w-7xl mx-auto sm:px-8 lg:px-12">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="relative overflow-x-auto shadow-xl sm:rounded-lg">
-                    <div class="flex justify-between p-4">
-                        <x-primary-button href="{{ route('admin.purchases.report') }}" class="inline-flex items-center px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-700 focus:outline-none focus:border-green-700 focus:ring focus:ring-green-200 active:bg-green-600 disabled:opacity-25 transition">Lihat Report</x-primary-button>
+                    <div class="flex justify-end p-4">
                         <x-primary-button id="btnAdd">Tambah Pembelian</x-primary-button>
                     </div>
                     <table id="tablePurchases" class="w-full border text-sm">
